@@ -11,28 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Route::group(['middleware' => ['auth']], function () {
-//     Route::get('/about', function () {
-//        echo Auth::user()->usertype."<br>";
-       
-//        if (Gate::allows('isUser')) {
-//             echo "user can view this page";
-//         }
-
-//         if (Gate::allows('isAdmin')) {
-//             echo "admin also can view this page";
-//         }
-//     });
-    
-//     Route::get('/service', function () {
-//         return "service page";
-//     });
+// Route::get('/', function () {
+//     return view('welcome');
 // });
 
+Route::get('/', 'PagesController@index');
+Route::resource('/posts', 'PostController');
+Route::get('/users', 'admin\MemberController@index');
+
+// ============== authendicated routes =====================/
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('members')->middleware(['auth','can:isUser'])->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
+
+Route::prefix('admin')->middleware(['auth','can:isAdmin'])->group(function () {
+    Route::get('/dashboard', 'admin\DashboardController@index')->name('dashboard');
+});
