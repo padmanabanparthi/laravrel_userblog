@@ -16,6 +16,9 @@
 // });
 
 Route::get('/', 'PagesController@index');
+Route::get('/notes', function () {
+    return view('notes');
+});
 Route::resource('/posts', 'PostController');
 Route::get('/users', 'admin\MemberController@index');
 
@@ -31,4 +34,5 @@ Route::prefix('admin')->middleware(['auth','can:isAdmin'])->group(function () {
     Route::get('/dashboard', 'admin\DashboardController@index')->name('dashboard');
     Route::resource('/users', 'admin\MemberController');
     Route::resource('/posts', 'admin\PostController');
+    Route::get('/posts-by-user/{id}', ['uses' =>'admin\PostController@index']);
 });

@@ -38,7 +38,7 @@
         </div>
     </div>
    
-    <div class="box-body" style="padding:30px">        
+    <div class="box-body table-responsive" style="padding:30px">        
         {{-- display the success and error messages --}}
         @include('admin.includes.messages')
         <table id="example1" class="table table-bordered table-striped">

@@ -20,9 +20,23 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id=NULL)
     {
-        $posts = Post::with('member')->latest()->get();
+        if($id){
+            $uid =  $id;
+            $posts = Post::with('member')->where('user_id', $uid)->latest()->get();
+        }
+        else{
+            $posts = Post::with('member')->latest()->get();
+        }
+        // ================= without where caluse =============/
+        //$posts = Post::with('member')->latest()->get();
+
+        // =================== with where clause
+        // $posts = Post::with(['member' => function ($query) {
+        //     $query->where('user_id', $id);
+        // }])->latest()->get();
+      
         
         //return $posts;
         $data['pageId'] = $this->pageId;

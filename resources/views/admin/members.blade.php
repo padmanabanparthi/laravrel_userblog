@@ -38,7 +38,7 @@
         </div>
     </div>
    
-    <div class="box-body" style="padding:30px">        
+    <div class="box-body table-responsive" style="padding:30px">        
         {{-- display the success and error messages --}}
         @include('admin.includes.messages')
         <table id="example1" class="table table-bordered table-striped">
@@ -56,7 +56,7 @@
                 @foreach ($users as $user)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $user->name }} @if($user->posts_count>0) <span class="label label-success">{{$user->posts_count}} Posts</span> @endif </td>
+                    <td>{{ $user->name }} @if($user->posts_count>0) <a href="{{ url('admin/posts-by-user/'.$user->id) }}"><span class="label label-success">{{$user->posts_count}} Posts</span></a> @endif </td>
                     <td>{{ $user->email }} </td>
                     <td>{{ $user->usertype }}</td>
                     <td>{{ date("d-M-Y h:i A",strtotime($user->created_at)) }}</td>
@@ -79,5 +79,3 @@
     </div>
 </div>
 @endsection
-
-
