@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
+    private $pageId = 1;
     /**
      * Create a new controller instance.
      *
@@ -24,6 +25,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $data['pageId'] = $this->pageId;
+        return view('admin.dashboard',$data);
     }
 }

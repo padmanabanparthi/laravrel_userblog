@@ -4,11 +4,20 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 use App\Member;
 
 class MemberController extends Controller
 {
+    private $pageId = 2;
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +25,11 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $users = Member::all();
-        return $users;
+        $data['pageId'] = $this->pageId;
+        $data['users'] = Member::withCount('posts')->latest()->get();
+        //return $data['users'];
+
+        return view('admin.members',$data);
     }
 
     /**
@@ -27,7 +39,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        $data['pageId'] = $this->pageId;
+        return view('admin.members-add',$data);
     }
 
     /**
@@ -38,7 +51,22 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $validatedData = $request->validate([
+            'usertype' => 'required',
+            'email' => 'required|unique:users|max:255',
+            'name' => 'required',
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        $user = new Member;
+        $user->name = $request->name;
+        $user->usertype = $request->usertype;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect('/admin/users')->with("success" , "User Created");
     }
 
     /**
@@ -49,7 +77,10 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['pageId'] = $this->pageId;
+        $data['userInfo'] = Member::find($id);
+       // return $data['userInfo']->posts;
+        return view('admin.members-view',$data);
     }
 
     /**
@@ -60,7 +91,10 @@ class MemberController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['pageId'] = $this->pageId;
+        $data['userInfo'] = Member::find($id);
+        //return $data['userInfo'];
+        return view('admin.members-edit',$data);
     }
 
     /**
@@ -72,7 +106,22 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'usertype' => 'required',
+            'email' => [
+                'required',
+                Rule::unique('users')->ignore($id),
+            ],
+            'name' => 'required',
+        ]);
+
+        $user = Member::find($id);
+        $user->name = $request->name;
+        $user->usertype = $request->usertype;
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect('/admin/users')->with("success" , "User Updated");
     }
 
     /**
@@ -83,6 +132,9 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = member::find($id);
+
+        $user->delete();
+        return redirect('/admin/users')->with("success" , "User Deleted");
     }
 }
