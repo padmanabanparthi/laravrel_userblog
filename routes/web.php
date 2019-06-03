@@ -16,17 +16,17 @@
 // });
 
 Route::get('/', 'PagesController@index');
-Route::get('/notes', function () {
-    return view('notes');
-});
-Route::resource('/posts', 'PostController');
-Route::get('/users', 'admin\MemberController@index');
+Route::get('/blog', 'PostController@index');
+Route::get('/blog/{id}/{title}', ['uses' =>'PostController@single_blog']);
+Route::get('/notes', 'PagesController@notes');
 
 // ============== authendicated routes =====================/
 Auth::routes();
 
 Route::prefix('members')->middleware(['auth','can:isUser'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/my-posts', 'PostController@posts_by_member');
+    Route::resource('/blog', 'PostController');
 });
 
 

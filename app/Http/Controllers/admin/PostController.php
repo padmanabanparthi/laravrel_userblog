@@ -66,12 +66,33 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:191',
             'content' => 'required',
+            'featured_image' => 'image|nullable|max:1999'
         ]);
+        
+        $fileNameToStore = NULL;
+        //handle the upload
+        if ($request->hasFile('featured_image')) {
+            $image = $request->file('featured_image');
+            //get filename with extension
+            $fileNameWithExt = $image->getClientOriginalName();
+            //get just filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //get just ext
+            $ext = $image->getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$ext;
+            // Upload Image with laravel default
+            //$path = $request->file('featured_image')->storeAs('public/featured_images',$fileNameToStore);
+            
+            //another method for upload image
+            $destinationPath = public_path('/images/featured_images');
+            $image->move($destinationPath, $fileNameToStore);
+        }
 
         $post = new Post;
         $post->title = $request->title;
         $post->content = $request->content;
         $post->user_id = Auth::id();
+        $post->featured_image = $fileNameToStore;
         $post->save();
 
         return redirect('/admin/posts')->with("success" , "Post Created");
@@ -118,11 +139,33 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:191',
             'content' => 'required',
+            'featured_image' => 'image|nullable|max:1999'
         ]);
+        
+        //handle the upload
+        if ($request->hasFile('featured_image')) {
+            $image = $request->file('featured_image');
+            //get filename with extension
+            $fileNameWithExt = $image->getClientOriginalName();
+            //get just filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //get just ext
+            $ext = $image->getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$ext;
+            // Upload Image with laravel default
+            //$path = $request->file('featured_image')->storeAs('public/featured_images',$fileNameToStore);
+            
+            //another method for upload image
+            $destinationPath = public_path('/images/featured_images');
+            $image->move($destinationPath, $fileNameToStore);
+        }
 
         $post = Post::find($id);
         $post->title = $request->title;
         $post->content = $request->content;
+        if ($request->hasFile('featured_image')) {
+            $post->featured_image = $fileNameToStore;
+        }
         $post->save();
 
         return redirect('/admin/posts')->with("success" , "Post Updated");

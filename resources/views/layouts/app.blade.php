@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
     .header-bg{
         /*
@@ -55,12 +57,18 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    @if(!isset($pageId))
+                        <?php $pageId = NULL ?>
+                    @endif
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item @if($pageId == 1) active @endif">
                             <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item @if($pageId == 11) active @endif">
+                            <a class="nav-link" href="{{ url('/blog') }}">Blog</a>
+                        </li>
+                        <li class="nav-item @if($pageId == 2) active @endif">
                             <a class="nav-link" href="{{ url('/notes') }}">Notes</a>
                         </li>
                     </ul>
@@ -78,12 +86,21 @@
                                 </li>
                             @endif
                         @else
+                           
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @can('isAdmin')
+                                        <a class="dropdown-item" href="{{ url('/admin/dashboard') }}">Dashboard</a>
+                                    @endcan
+                                    @can('isUser')
+                                        <a class="dropdown-item" href="{{ url('/members/home') }}">Dashboard</a>
+                                        <a class="dropdown-item" href="{{ url('/members/my-posts') }}">Your Posts</a>
+                                    @endcan
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -105,5 +122,18 @@
             @yield('content')
         </main>
     </div>
+    <!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <a href=""> Padmanaban</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+    @yield('jsAssets')
+
 </body>
 </html>

@@ -17,6 +17,13 @@
             <label for="title">Title:</label>
             <span>{{ $postInfo->title }}</span>
         </div>
+
+        <div class="form-group">
+            <label for="title">Featured Image:</label>
+            @if ($postInfo->featured_image)
+                <img src="{{ asset('/images/featured_images/'.$postInfo->featured_image) }}" style="width:50%" />
+            @endif
+        </div>
         
         <div class="form-group">
             <label for="content">Content:</label>

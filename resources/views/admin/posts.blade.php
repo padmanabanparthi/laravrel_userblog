@@ -45,6 +45,7 @@
             <thead>
                 <tr>
                     <th style="width:40px">#</th>
+                    <th >Featured Image</th>
                     <th style="width:150px">Title</th>
                     <th>Content</th>
                     <th>Author</th>
@@ -56,6 +57,11 @@
                 @foreach ($posts as $post)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
+                    <td>
+                        @if ($post->featured_image)
+                            <img src="{{ asset('/images/featured_images/'.$post->featured_image) }}" style="width:80px" />
+                        @endif
+                    </td>
                     <td>{{ $post->title }}</td>
                     <td>{!! str_limit($post->content, 150); !!} <a href="{{ url('/admin/posts/'.$post->id) }}">@if(strlen($post->content)>150) Read more @endif</a></td>
                     <td>

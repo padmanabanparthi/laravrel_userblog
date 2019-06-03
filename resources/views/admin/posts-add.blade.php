@@ -22,12 +22,16 @@
         {{-- display the success and error messages --}}
         @include('admin.includes.messages')
         
-        <form action="{{ url('/admin/posts') }}" method="POST" autocomplete="off">
+        <form action="{{ url('/admin/posts') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
             @csrf
             
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}">
+            </div>
+            <div class="form-group">
+                <label for="title">Featured image:</label>
+                <input type="file" class="form-control" name="featured_image" id="title">
             </div>
             <div class="form-group">
                 <label for="content">Content:</label>

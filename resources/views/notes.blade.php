@@ -140,6 +140,19 @@ ol li{
                     </ol>
                 </div>
             </div>
+
+            <div class="card cardsection" id="AuthendicateAndCheckTheUserRole">
+                <div class="card-header"><h4>Customizing The Pagination View</h4></div>
+                <div class="card-body">
+                However, the easiest way to customize the pagination views is by exporting them to your  <span class="path">resources/views/vendor</span> directory using the <span class="comment">vendor:publish</span> command:<br><a href="https://laravel.com/docs/5.7/pagination#customizing-the-pagination-view">(View Reference)</a>
+                <br>
+                <span class="comment">php artisan vendor:publish --tag=laravel-pagination</span> <br>
+                <p>This command will place the views in the <span class="path">resources/views/vendor/pagination</span> directory. The  <span class="path">bootstrap-4.blade.php</span> file within this directory corresponds to the default pagination view. You may edit this file to modify the pagination HTML.</p>
+                    
+                </div>
+            </div>
+
+            php artisan vendor:publish --tag=laravel-pagination
     </div>
 </div>
 @endsection

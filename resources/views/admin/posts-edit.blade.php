@@ -22,13 +22,20 @@
         {{-- display the success and error messages --}}
         @include('admin.includes.messages')
         
-        <form action="{{ url('/admin/posts/'.$postInfo->id) }}" method="POST" autocomplete="off">
+        <form action="{{ url('/admin/posts/'.$postInfo->id) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
             @csrf
             @method("PUT")
            
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input type="text" class="form-control" name="title" id="title" value="{{ $postInfo->title }}">
+            </div>
+            <div class="form-group">
+                <label for="title">Featured image:</label>
+                @if ($postInfo->featured_image)
+                    <img src="{{ asset('/images/featured_images/'.$postInfo->featured_image) }}" style="width:50%" />
+                @endif
+                <input type="file" class="form-control" name="featured_image" id="title">
             </div>
             <div class="form-group">
                 <label for="content">Content:</label>

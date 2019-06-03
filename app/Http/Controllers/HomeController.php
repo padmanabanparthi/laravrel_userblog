@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data['pageId'] = 11;
+        return view('home',$data);
     }
 }
