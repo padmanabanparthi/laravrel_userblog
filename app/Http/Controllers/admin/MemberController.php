@@ -113,12 +113,14 @@ class MemberController extends Controller
                 Rule::unique('users')->ignore($id),
             ],
             'name' => 'required',
+            'status' => 'required',
         ]);
 
         $user = Member::find($id);
         $user->name = $request->name;
         $user->usertype = $request->usertype;
         $user->email = $request->email;
+        $user->status = $request->status;
         $user->save();
 
         return redirect('/admin/users')->with("success" , "User Updated");

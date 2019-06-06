@@ -30,7 +30,14 @@
                 <label for="email">Email address:</label>
                 <input type="email" class="form-control" name="email" id="email" value="{{ $userInfo->email }}" autocomplete="nope">
             </div>
-           
+           <div class="form-group">
+                <label for="status">Status:</label>
+                <select class="form-control" name="status" id="status">
+                    <option value="">Select</option>
+                    <option value="1" @if ($userInfo->status=="1") selected  @endif>Active</option>
+                    <option value="0" @if ($userInfo->status=="0") selected  @endif>Deactive</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary hvr-glow">Update</button>
         </form>
     </div>

@@ -29,6 +29,38 @@ ol li{
         </div>
         <div class="col-md-12">
             <div class="card cardsection" id="MigrateTable">
+                <div class="card-header"><h4>disable/enable (block) user login ( web + passport oauth):</h4></div>
+                <div class="card-body">
+                    <p>To block the disabled user in login..</p>
+                    <ol>
+                        <li>add new field to the User table called <code>‘status’ (1:enabled, 0:disabed)</code></li>
+                        <li>To block the web login , in <span class="path">app/Http/Controllers/Auth/LoginController.php</span> add the follwoing function:<br>
+                            <code>
+                                /**<br>
+                                * Get the needed authorization credentials from the request.<br>
+                                *<br>
+                                * @param \Illuminate\Http\Request $request<br>
+                                * @return array<br>
+                                */<br>
+                                protected function credentials(\Illuminate\Http\Request $request)<br>
+                                {<br>
+                                $credentials = $request->only($this->username(), ‘password’);<br>
+                                return array_add($credentials, ‘status’, ‘1’);<br>
+                                }<br>
+                            </code>
+                        </li>
+                        <li>to block the user when using passport authentication ( token ) , in the User.php model add the following function :<br>
+                            <code>
+                                public function findForPassport($identifier) {<br>
+                                    return User::orWhere(‘email’, $identifier)->where(‘status’, 1)->first();<br>
+                                }<br>
+                            </code>
+                        </li>
+                        
+                    </ol>
+                </div>
+            </div>
+            <div class="card cardsection" id="MigrateTable">
                 <div class="card-header"><h4>Migrate Tables:</h4></div>
                 <div class="card-body">
                    When migrate the tables to avoid errors please use the following steps..

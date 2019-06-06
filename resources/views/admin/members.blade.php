@@ -38,7 +38,8 @@
         </div>
     </div>
    
-    <div class="box-body table-responsive" style="padding:30px">        
+    <div class="box-body table-responsive" style="padding:30px">    
+         
         {{-- display the success and error messages --}}
         @include('admin.includes.messages')
         <table id="example1" class="table table-bordered table-striped">
@@ -49,6 +50,7 @@
                     <th>Email</th>
                     <th>User Type</th>
                     <th>Created Date</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -60,6 +62,13 @@
                     <td>{{ $user->email }} </td>
                     <td>{{ $user->usertype }}</td>
                     <td>{{ date("d-M-Y h:i A",strtotime($user->created_at)) }}</td>
+                    <td>
+                        @if ($user->status==1)
+                            Active
+                        @else
+                            Deactive
+                        @endif  
+                    </td>
                     <td>
                        
                         <form method="post" action="{{ url('/admin/users/'.$user->id) }}">
