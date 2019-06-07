@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('jsAssets')
-<script src="/js/tinymce/tinymce.min.js"></script>
+<script src="{{ asset('/plugins/tinymce/tinymce.min.js') }}"></script>
  <script>
     tinymce.init({
   selector: 'textarea',

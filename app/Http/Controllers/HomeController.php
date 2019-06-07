@@ -24,6 +24,6 @@ class HomeController extends Controller
     public function index()
     {
         $data['pageId'] = 11;
-        return view('home',$data);
+        return view('members.home',$data);
     }
 }

@@ -19,7 +19,11 @@
 <div class="box">
        
     <div class="box-body" style="padding:30px">     
-        {{-- display the success and error messages --}}
+        <div class="pull-right">
+            <a class="btn btn-info btn-sm" href="{{ redirect()->back()->getTargetUrl() }}"><i class="fa fa-long-arrow-left"></i> Back</a>
+        </div> 
+        <div class="col-md-12">
+            {{-- display the success and error messages --}}
         @include('admin.includes.messages')
         
         <form action="{{ url('/admin/posts/'.$postInfo->id) }}" method="POST" autocomplete="off" enctype="multipart/form-data">
@@ -44,6 +48,8 @@
            
             <button type="submit" class="btn btn-primary hvr-glow">Update</button>
         </form>
+        </div>
+    
     </div>
 </div>
 @endsection

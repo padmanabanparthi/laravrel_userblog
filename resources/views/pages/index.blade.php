@@ -17,7 +17,7 @@
         </div>
         @foreach ($posts as $post)
             <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
+                <div class="card mb-4 box-shadow box-shadow hvr-grow-shadow">
                     <a href="{{ url('/blog/'.$post->id.'/'.$post->title) }}">
                     <img class="card-img-top" alt="{{ $post->title }}" style="height: 225px; width: 100%; display: block;" src="@if($post->featured_image) {{ asset('images/featured_images/'.$post->featured_image)}} @else {{ asset('images/placeholder.png')}} @endif" >
                     </a>

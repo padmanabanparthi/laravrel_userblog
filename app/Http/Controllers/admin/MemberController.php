@@ -57,9 +57,30 @@ class MemberController extends Controller
             'email' => 'required|unique:users|max:255',
             'name' => 'required',
             'password' => 'required|confirmed|min:6',
+            'profile_image' => 'image|nullable|max:1999'
         ]);
 
+        $fileNameToStore = NULL;
+        //handle the upload
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            //get filename with extension
+            $fileNameWithExt = $image->getClientOriginalName();
+            //get just filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //get just ext
+            $ext = $image->getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$ext;
+            // Upload Image with laravel default
+            //$path = $request->file('profile_image')->storeAs('public/profile_image',$fileNameToStore);
+            
+            //another method for upload image
+            $destinationPath = public_path('/images/profile_images');
+            $image->move($destinationPath, $fileNameToStore);
+        }
+
         $user = new Member;
+        $user->profile_image = $fileNameToStore;
         $user->name = $request->name;
         $user->usertype = $request->usertype;
         $user->email = $request->email;
@@ -113,14 +134,37 @@ class MemberController extends Controller
                 Rule::unique('users')->ignore($id),
             ],
             'name' => 'required',
-            'status' => 'required',
+            'profile_image' => 'image|nullable|max:1999'
         ]);
+        
+        //handle the upload
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            //get filename with extension
+            $fileNameWithExt = $image->getClientOriginalName();
+            //get just filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //get just ext
+            $ext = $image->getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$ext;
+            // Upload Image with laravel default
+            //$path = $request->file('profile_image')->storeAs('public/profile_image',$fileNameToStore);
+            
+            //another method for upload image
+            $destinationPath = public_path('/images/profile_images');
+            $image->move($destinationPath, $fileNameToStore);
+        }
 
         $user = Member::find($id);
         $user->name = $request->name;
         $user->usertype = $request->usertype;
         $user->email = $request->email;
-        $user->status = $request->status;
+        if ($id != 2) {
+            $user->status = $request->status;
+        } 
+        if ($request->hasFile('profile_image')) {
+            $user->profile_image = $fileNameToStore;
+        }
         $user->save();
 
         return redirect('/admin/users')->with("success" , "User Updated");

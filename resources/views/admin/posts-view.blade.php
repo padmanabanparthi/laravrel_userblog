@@ -8,6 +8,10 @@
 <div class="box">
        
     <div class="box-body" style="padding:30px">     
+        <div class="pull-right">
+            <a href="{{url('/admin/posts/'.$postInfo->id.'/edit')}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a>
+            <a class="btn btn-info btn-sm" href="/admin/posts"><i class="fa fa-long-arrow-left"></i> Back</a>
+        </div>
        
         <div class="form-group">
             <label for="title">Author:</label>

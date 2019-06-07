@@ -11,7 +11,7 @@
         {{-- display the success and error messages --}}
         @include('admin.includes.messages')
         
-        <form action="{{ url('/admin/users') }}" method="POST" autocomplete="off">
+        <form action="{{ url('/admin/users') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="usertype">User type:</label>
@@ -36,6 +36,10 @@
             <div class="form-group">
                 <label for="pwd">Confirm Password:</label>
                 <input type="password" class="form-control" name="password_confirmation" id="pwd" value="" autocomplete="new-password">
+            </div>
+            <div class="form-group">
+                <label for="title">Profile image:</label>
+                <input type="file" class="form-control" name="profile_image" id="title">
             </div>
             <button type="submit" class="btn btn-primary hvr-glow">Add</button>
         </form>

@@ -26,8 +26,14 @@
             </div>
             <h1 class="blog-detail-title">{{ $post->title }}</h1>
             <div class="blog-detail-info">
-                <small><strong>{{ $post->member->name }}</strong></small>,
-                <small class="text-muted">{{ date('d M,Y',strtotime($post->created_at)) }}</small>
+                
+                <div class="userinfo userimage">
+                    <img src="@if($post->member->profile_image) {{asset('images/profile_images')}}/{{ $post->member->profile_image }} @else {{asset('images/user.png')}} @endif" class="img-circle userphoto" alt="User Image">
+                </div>
+                <div class="userinfo username">
+                    <small><strong>{{ $post->member->name }}</strong></small><br>
+                    <small class="text-muted">{{ date('d M,Y',strtotime($post->created_at)) }}</small>
+                </div>
             </div>
             @if($post->featured_image)
             <div class="blog-detail-image">

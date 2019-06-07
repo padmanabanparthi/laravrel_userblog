@@ -16,30 +16,13 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+
+    <link rel="stylesheet" href="{{ asset('') }}css/hover-min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-    .header-bg{
-        /*
-        -webkit-clip-path: ellipse(44% 41% at 77% 36%);
-        clip-path: ellipse(44% 41% at 77% 36%); 
-        */
-       
-        -webkit-clip-path: ellipse(44% 41% at 77% 36%);
-        clip-path: ellipse(30% 41% at 78% 26%);
-        position:absolute;
-        right: 0px;
-        top:56px;
-
-        height:600px;
-        width:100%;
-       
-       background: rgb(2,0,36);
-        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,22,9,1) 0%, rgba(52,6,145,1) 100%);
-    }
-</style>
 
 @yield('cssAssets')
 
@@ -126,7 +109,7 @@
 <footer class="page-footer font-small blue">
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+  <div class="footer-copyright text-center py-3">&copy; {{ date("Y") }}.
     <a href=""> Padmanaban</a>
   </div>
   <!-- Copyright -->

@@ -33,152 +33,189 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet">
 
-    <style>
-        body{
-            font-size:15.5px;
-            font-family: 'Maven Pro', sans-serif;
-        }
-        .content-wrapper {
-            min-height: 100%;
-            background-color: #f7f7f7;
-            z-index: 800;
-        }
-        .main-header .logo {
-            -webkit-transition: width .3s ease-in-out;
-            -o-transition: width .3s ease-in-out;
-            transition: width .3s ease-in-out;
-            display: block;
-            float: left;
-            height: 52px;
-            font-size: 20px;
-            line-height: 50px;
-            text-align: center;
-            width: 230px;
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-            padding: 0 15px;
-            font-weight: 300;
-            overflow: hidden;
-        }
-        .box {
-            position: relative;
-            border-radius: 10px;
-            background: #ffffff;
-            border: 1px solid #dddddd;
-            margin-bottom: 20px;
-            width: 100%;
-            box-shadow: 0 1px 6px rgba(0,0,0,0.2);
-        }
-        .skin-purple-light .main-header .navbar {
-           background: -moz-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* ff3.6+ */
-            background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,79,79,1)), color-stop(100%, rgba(96,92,168,1))); /* safari4+,chrome */
-            background: -webkit-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* safari5.1+,chrome10+ */
-            background: -o-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* opera 11.10+ */
-            background: -ms-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* ie10+ */
-            background: linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* w3c */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#605ca8', endColorstr='#FF4F4F',GradientType=1 ); /* ie6-9 */
-            background-color: #605ca8;
-        }
-        .skin-purple-light .main-header .logo {
-            background-color: #ffffff;
-            color: #383838;
-            border-bottom: 0 solid transparent;
-        }
-        .skin-purple-light .main-sidebar {
-            border: none;
-        }
-        .skin-purple-light .wrapper, .skin-purple-light .main-sidebar, .skin-purple-light .left-side {
-            background-color: #ffffff;
-            box-shadow: 0 1px 6px rgba(0,0,0,0.2);
-        }
-        .skin-purple-light .sidebar a {
-            color: #565656;
-        }
-        .skin-purple-light .sidebar-menu>li>a {
-            border-left: 3px solid transparent;
-            font-weight: 600;
-        }
+  <style>
+    .profile-header {
+      position:relative;
+      text-align: center;
+      padding-top:0px;
+    }
+    .profile-header .img-circle {
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+    }
+    .profile-description .profile-status .active{
+      color:green
+    }
+    .profile-description .profile-status .inactive{
+      color:red
+    }
+    /*.profile-header .profile-createddate {
+      margin-top:160px;
+      padding:10px;
+    }*/
+    .profile-description{
+      margin-top:10px;
+      text-align:center;
+    }
+    .profile-description .profile-name{
+      font-size:30px;
+      font-family: 'Maven Pro', sans-serif;
+      font-weight:600;
+    }
+    .profile-description  .usertype{
+      background-image: linear-gradient(to right, #f4c354, #fba850, #fd8d55, #f8725f, #ed5a6d);
+      padding:5px 25px;
+      color:white;
+      border-radius:20px;
+    }
+    
+
+    body{
+      font-size:15.5px;
+      font-family: 'Maven Pro', sans-serif;
+    }
+    .content-wrapper {
+      min-height: 100%;
+      background-color: #f7f7f7;
+      z-index: 800;
+    }
+    .main-header .logo {
+      -webkit-transition: width .3s ease-in-out;
+      -o-transition: width .3s ease-in-out;
+      transition: width .3s ease-in-out;
+      display: block;
+      float: left;
+      height: 52px;
+      font-size: 20px;
+      line-height: 50px;
+      text-align: center;
+      width: 230px;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      padding: 0 15px;
+      font-weight: 300;
+      overflow: hidden;
+    }
+    .box {
+        position: relative;
+        border-radius: 10px;
+        background: #ffffff;
+        border: 1px solid #dddddd;
+        margin-bottom: 20px;
+        width: 100%;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+    }
+    .skin-purple-light .main-header .navbar {
+        background: -moz-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* ff3.6+ */
+        background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,79,79,1)), color-stop(100%, rgba(96,92,168,1))); /* safari4+,chrome */
+        background: -webkit-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* safari5.1+,chrome10+ */
+        background: -o-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* opera 11.10+ */
+        background: -ms-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* ie10+ */
+        background: linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* w3c */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#605ca8', endColorstr='#FF4F4F',GradientType=1 ); /* ie6-9 */
+        background-color: #605ca8;
+    }
+    .skin-purple-light .main-header .logo {
+        background-color: #ffffff;
+        color: #383838;
+        border-bottom: 0 solid transparent;
+    }
+    .skin-purple-light .main-sidebar {
+        border: none;
+    }
+    .skin-purple-light .wrapper, .skin-purple-light .main-sidebar, .skin-purple-light .left-side {
+        background-color: #ffffff;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+    }
+    .skin-purple-light .sidebar a {
+        color: #565656;
+    }
+    .skin-purple-light .sidebar-menu>li>a {
+        border-left: 3px solid transparent;
+        font-weight: 600;
+    }
+    
+    /* ====================== alert messages ==================================*/
+    .bg-red, .callout.callout-danger, .alert-danger, .alert-error, .label-danger, .modal-danger .modal-body {
+      background-image: linear-gradient(to right, #e13838, #e2433a, #e24c3c, #e3553e, #e35d41);
+        background-color: #dd4b39 !important;
+    }
+    .bg-green, .callout.callout-success, .alert-success, .label-success, .modal-success .modal-body {
+        background-image: linear-gradient(to left, #7ecd27, #65b625, #4ea022, #378a1e, #217419);
+        background-color: #00a65a !important;
+    }
+
+    /* ====================== btn ==================================*/
+    .btn{
+        border-radius:20px;
+        padding:6px 30px;
+        font-size:18px;
+        box-shadow:0px 3px 10px #afafaf;
+    }
+    .btn-sm{
+        border-radius:20px;
+        padding:5px 15px;
+        font-size:12px;
+        box-shadow:0px 3px 10px #afafaf;
+    }
+    .btn-primary {
+        background-image: linear-gradient(to right, #f4545b, #e14776, #c3478c, #9c4c99, #6f509b);
+        border: 0px !important;
+    }
+    .btn-success {
+        background-image: linear-gradient(to right, #71cf0b, #5bb816, #46a119, #338a1a, #217419);
+        border: 0px !important;
+    }
+    .btn-info {
+        background-image: linear-gradient(to right, #54f4df, #00d9de, #00bcd7, #00a0c9, #1083b5);
+        border: 0px !important;
+    }
+    .btn-danger {
+        background-image: linear-gradient(to right, #f4c354, #fba850, #fd8d55, #f8725f, #ed5a6d);
+        border: 0px !important;
+    }
+
+      /* ====================== pagination ==================================*/
+    .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+        z-index: 3;
+        color: #fff;
+        cursor: default;
+        border-radius:20px;
+        background: -moz-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* ff3.6+ */
+        background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,79,79,1)), color-stop(100%, rgba(96,92,168,1))); /* safari4+,chrome */
+        background: -webkit-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* safari5.1+,chrome10+ */
+        background: -o-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* opera 11.10+ */
+        background: -ms-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* ie10+ */
+        background: linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* w3c */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#605ca8', endColorstr='#FF4F4F',GradientType=1 ); /* ie6-9 */
+        border: 0px !important;
+    }
+    .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+        border-radius:20px;
+        color: #777;
+        cursor: not-allowed;
+        background: -moz-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(214,214,214,1) 100%); /* ff3.6+ */
+        background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(214,214,214,1))); /* safari4+,chrome */
+        background: -webkit-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(214,214,214,1) 100%); /* safari5.1+,chrome10+ */
+        background: -o-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(214,214,214,1) 100%); /* opera 11.10+ */
+        background: -ms-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(214,214,214,1) 100%); /* ie10+ */
+        background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(214,214,214,1) 100%); /* w3c */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D6D6D6', endColorstr='#FFFFFF',GradientType=1 ); /* ie6-9 */
+        border: 0px !important;
+    }
+    .pagination>li>a {
+        border-radius:20px;
         
-        /* ====================== alert messages ==================================*/
-        .bg-red, .callout.callout-danger, .alert-danger, .alert-error, .label-danger, .modal-danger .modal-body {
-          background-image: linear-gradient(to right, #e13838, #e2433a, #e24c3c, #e3553e, #e35d41);
-            background-color: #dd4b39 !important;
-        }
-        .bg-green, .callout.callout-success, .alert-success, .label-success, .modal-success .modal-body {
-            background-image: linear-gradient(to left, #7ecd27, #65b625, #4ea022, #378a1e, #217419);
-            background-color: #00a65a !important;
-        }
-
-        /* ====================== btn ==================================*/
-        .btn{
-            border-radius:20px;
-            padding:6px 30px;
-            font-size:18px;
-            box-shadow:0px 3px 10px #afafaf;
-        }
-        .btn-sm{
-            border-radius:20px;
-            padding:5px 15px;
-            font-size:12px;
-            box-shadow:0px 3px 10px #afafaf;
-        }
-        .btn-primary {
-            background-image: linear-gradient(to right, #f4545b, #e14776, #c3478c, #9c4c99, #6f509b);
-            border: 0px !important;
-        }
-        .btn-success {
-            background-image: linear-gradient(to right, #71cf0b, #5bb816, #46a119, #338a1a, #217419);
-            border: 0px !important;
-        }
-        .btn-info {
-            background-image: linear-gradient(to right, #54f4df, #00d9de, #00bcd7, #00a0c9, #1083b5);
-            border: 0px !important;
-        }
-        .btn-danger {
-            background-image: linear-gradient(to right, #f4c354, #fba850, #fd8d55, #f8725f, #ed5a6d);
-            border: 0px !important;
-        }
-
-         /* ====================== pagination ==================================*/
-        .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-            z-index: 3;
-            color: #fff;
-            cursor: default;
-            border-radius:20px;
-            background: -moz-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* ff3.6+ */
-            background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,79,79,1)), color-stop(100%, rgba(96,92,168,1))); /* safari4+,chrome */
-            background: -webkit-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* safari5.1+,chrome10+ */
-            background: -o-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* opera 11.10+ */
-            background: -ms-linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* ie10+ */
-            background: linear-gradient(45deg, rgba(255,79,79,1) 0%, rgba(96,92,168,1) 100%); /* w3c */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#605ca8', endColorstr='#FF4F4F',GradientType=1 ); /* ie6-9 */
-            border: 0px !important;
-        }
-        .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
-            border-radius:20px;
-            color: #777;
-            cursor: not-allowed;
-            background: -moz-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(214,214,214,1) 100%); /* ff3.6+ */
-            background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(214,214,214,1))); /* safari4+,chrome */
-            background: -webkit-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(214,214,214,1) 100%); /* safari5.1+,chrome10+ */
-            background: -o-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(214,214,214,1) 100%); /* opera 11.10+ */
-            background: -ms-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(214,214,214,1) 100%); /* ie10+ */
-            background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(214,214,214,1) 100%); /* w3c */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D6D6D6', endColorstr='#FFFFFF',GradientType=1 ); /* ie6-9 */
-            border: 0px !important;
-        }
-        .pagination>li>a {
-            border-radius:20px;
-            
-            background: -moz-linear-gradient(45deg, rgba(255,230,230,1) 0%, rgba(180,181,214,1) 100%); /* ff3.6+ */
-            background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,230,230,1)), color-stop(100%, rgba(180,181,214,1))); /* safari4+,chrome */
-            background: -webkit-linear-gradient(45deg, rgba(255,230,230,1) 0%, rgba(180,181,214,1) 100%); /* safari5.1+,chrome10+ */
-            background: -o-linear-gradient(45deg, rgba(255,230,230,1) 0%, rgba(180,181,214,1) 100%); /* opera 11.10+ */
-            background: -ms-linear-gradient(45deg, rgba(255,230,230,1) 0%, rgba(180,181,214,1) 100%); /* ie10+ */
-            background: linear-gradient(45deg, rgba(255,230,230,1) 0%, rgba(180,181,214,1) 100%); /* w3c */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#B4B5D6', endColorstr='#FFE6E6',GradientType=1 ); /* ie6-9 */
-            border: 0px !important;
-            color: #666;
-        }
+        background: -moz-linear-gradient(45deg, rgba(255,230,230,1) 0%, rgba(180,181,214,1) 100%); /* ff3.6+ */
+        background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,230,230,1)), color-stop(100%, rgba(180,181,214,1))); /* safari4+,chrome */
+        background: -webkit-linear-gradient(45deg, rgba(255,230,230,1) 0%, rgba(180,181,214,1) 100%); /* safari5.1+,chrome10+ */
+        background: -o-linear-gradient(45deg, rgba(255,230,230,1) 0%, rgba(180,181,214,1) 100%); /* opera 11.10+ */
+        background: -ms-linear-gradient(45deg, rgba(255,230,230,1) 0%, rgba(180,181,214,1) 100%); /* ie10+ */
+        background: linear-gradient(45deg, rgba(255,230,230,1) 0%, rgba(180,181,214,1) 100%); /* w3c */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#B4B5D6', endColorstr='#FFE6E6',GradientType=1 ); /* ie6-9 */
+        border: 0px !important;
+        color: #666;
+    }
         
     </style>
 </head>
@@ -292,14 +329,14 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{asset('images/user.png')}}" class="user-image" alt="User Image">
+              <img src="@if(Auth::user()->profile_image) {{asset('images/profile_images')}}/{{ Auth::user()->profile_image }} @else {{asset('images/user.png')}} @endif" class="img-circle" alt="User Image" style="width:25px; height:25px">
+              
               <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{asset('images/user.png')}}" class="img-circle" alt="User Image">
-
+                 <img src="@if(Auth::user()->profile_image) {{asset('images/profile_images')}}/{{ Auth::user()->profile_image }} @else {{asset('images/user.png')}} @endif" class="img-circle" alt="User Image" >
                 <p>
                   {{ Auth::user()->name }}
                 </p>
@@ -308,7 +345,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="/admin/users/{{ Auth::id() }}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
@@ -338,7 +375,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{asset('images/user.png')}}" class="img-circle" alt="User Image">
+          <img src="@if(Auth::user()->profile_image) {{asset('images/profile_images')}}/{{ Auth::user()->profile_image }} @else {{asset('images/user.png')}} @endif" class="img-circle" alt="User Image" style="width:40px; height:40px">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>

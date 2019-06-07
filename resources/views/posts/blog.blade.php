@@ -47,7 +47,7 @@
                 @else
                 <div class="col-md-6 blog-list">
                 @endif
-                    <div class="card mb-4 box-shadow">
+                    <div class="card mb-4 hvr-shadow-radial">
                         <a href="{{ url('/blog/'.$post->id.'/'.$post->title) }}">
                         <img class="card-img-top" alt="{{ $post->title }}" style="height: 280px; width: 100%; object-fit:cover; display: block;" src="@if($post->featured_image) {{ asset('images/featured_images/'.$post->featured_image)}} @else {{ asset('images/placeholder.png')}} @endif" >
                         </a>
@@ -68,7 +68,10 @@
                                         @endif
                                     @endcan
                                 @else
-                                    <small><strong>{{ $post->member->name }}</strong></small>
+                                    <small>
+                                        <img src="@if($post->member->profile_image) {{asset('images/profile_images')}}/{{ $post->member->profile_image }} @else {{asset('images/user.png')}} @endif" class="img-circle userphoto" alt="User Image">
+                                        <strong>{{ $post->member->name }}</strong>
+                                    </small>
                                 @endif
                                
                                 <small class="text-muted">{{ date('d M,Y',strtotime($post->created_at)) }}</small>

@@ -63,9 +63,9 @@
                         @endif
                     </td>
                     <td>{{ $post->title }}</td>
-                    <td>{!! str_limit($post->content, 150); !!} <a href="{{ url('/admin/posts/'.$post->id) }}">@if(strlen($post->content)>150) Read more @endif</a></td>
+                    <td>{!! str_limit($post->content, 129); !!} <a href="{{ url('/admin/posts/'.$post->id) }}">@if(strlen($post->content)>150) Read more @endif</a></td>
                     <td>
-                    {{ $post->member->name }}
+                        <a href="{{ url('/admin/users/'.$post->member->id) }}">{{ $post->member->name }}</a>
                     </td>
                     <td>{{ date("d-M-Y h:i A",strtotime($post->created_at)) }}</td>
                     <td>

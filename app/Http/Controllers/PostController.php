@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         
-        $posts = Post::with('member')->latest()->simplePaginate(6);
+        $posts = Post::with('member')->latest()->paginate(6);
         // ================= without where caluse =============/
         //$posts = Post::with('member')->latest()->get();
 
@@ -29,7 +29,7 @@ class PostController extends Controller
         //return $posts;
         $data['pageId'] = 11;
         $data['posts'] = $posts;
-        return view('blog',$data);
+        return view('posts.blog',$data);
     }
 
     public function single_blog($id)
@@ -38,14 +38,14 @@ class PostController extends Controller
         $postinfo = Post::find($id);
         $data['post'] = $postinfo;
         //return $postinfo;
-        return view('blog-detail',$data);
+        return view('posts.blog-detail',$data);
     }
 
     public function posts_by_member()
     {
         
         $uid =  Auth::id();
-        $posts = Post::with('member')->where('user_id', $uid)->latest()->simplePaginate(6);
+        $posts = Post::with('member')->where('user_id', $uid)->latest()->paginate(6);
        
         // ================= without where caluse =============/
         //$posts = Post::with('member')->latest()->get();
@@ -59,7 +59,7 @@ class PostController extends Controller
         //return $posts;
         $data['pageId'] = 11;
         $data['posts'] = $posts;
-        return view('blog',$data);
+        return view('posts.blog',$data);
     }
 
     /**
@@ -70,7 +70,7 @@ class PostController extends Controller
     public function create()
     {
         $data['pageId'] = 11;
-        return view('blog-create',$data);
+        return view('posts.blog-create',$data);
     }
 
     /**
@@ -130,7 +130,7 @@ class PostController extends Controller
         $postinfo = Post::find($id);
         $data['postInfo'] = $postinfo;
         //return $postinfo;
-        return view('blog-detail',$data);
+        return view('posts.blog-detail',$data);
     }
 
     /**
@@ -145,7 +145,7 @@ class PostController extends Controller
         $postinfo = Post::find($id);
         $data['postInfo'] = $postinfo;
         //return $data['userInfo'];
-        return view('blog-edit',$data);
+        return view('posts.blog-edit',$data);
     }
 
     /**

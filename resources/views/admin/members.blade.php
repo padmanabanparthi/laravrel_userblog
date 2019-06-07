@@ -46,6 +46,7 @@
             <thead>
                 <tr>
                     <th style="width:40px">#</th>
+                    <th>Profile Image</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>User Type</th>
@@ -58,7 +59,16 @@
                 @foreach ($users as $user)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $user->name }} @if($user->posts_count>0) <a href="{{ url('admin/posts-by-user/'.$user->id) }}"><span class="label label-success">{{$user->posts_count}} Posts</span></a> @endif </td>
+                    <td>
+                        @if ($user->profile_image)
+                            <img src="{{ asset('/images/profile_images/'.$user->profile_image) }}" style="width:80px" /><br>
+                        @endif
+                    </td>
+                    <td>
+                        {{ $user->name }}
+                        @if($user->posts_count>0) <a href="{{ url('admin/posts-by-user/'.$user->id) }}"><span class="label label-success">{{$user->posts_count}} Posts</span></a> @endif 
+                        
+                    </td>
                     <td>{{ $user->email }} </td>
                     <td>{{ $user->usertype }}</td>
                     <td>{{ date("d-M-Y h:i A",strtotime($user->created_at)) }}</td>

@@ -14,12 +14,12 @@ class PagesController extends Controller
         $data['pageId'] = 1;
         $data['posts'] = Post::latest()->limit(3)->get();
         //return $data['posts'];
-        return view("index",$data);
+        return view("pages.index",$data);
     }
 
     public function notes(){
         $data['pageId'] = 2;
-        return view('notes',$data);
+        return view('pages.notes',$data);
     }
     
 }
