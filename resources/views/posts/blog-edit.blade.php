@@ -53,6 +53,7 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary hvr-glow">Update</button>
+                <a href="{{ url('/members/my-posts') }}" class="btn btn-danger hvr-glow">Cancel</a>
             </form>
        </div>
     </div>

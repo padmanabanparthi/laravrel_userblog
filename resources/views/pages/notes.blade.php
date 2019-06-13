@@ -184,7 +184,6 @@ ol li{
                 </div>
             </div>
 
-            php artisan vendor:publish --tag=laravel-pagination
     </div>
 </div>
 @endsection

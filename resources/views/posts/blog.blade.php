@@ -62,7 +62,7 @@
                                             <form action="{{url('/members/blog/'.$post->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{url('/members/blog/'.$post->id.'/edit')}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a>
+                                                <a href="{{url('/members/blog/'.$post->id.'/edit')}}" class="btn btn-sm btn-success hvr-glow"><i class="fa fa-edit"></i> Edit</a>
                                                 <button data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm hvr-glow"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         @endif

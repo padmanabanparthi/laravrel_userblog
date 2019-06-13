@@ -25,6 +25,9 @@ Auth::routes();
 
 Route::prefix('members')->middleware(['auth','can:isUser'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/profile', 'HomeController@profile');
+    Route::get('/profile/edit', 'HomeController@edit');
+    Route::post('/profile/update', 'HomeController@update');
     Route::get('/my-posts', 'PostController@posts_by_member');
     Route::resource('/blog', 'PostController');
 });
